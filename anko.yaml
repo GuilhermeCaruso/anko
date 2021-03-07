@@ -1,0 +1,10 @@
+version: 1.0.0
+application:
+  root_path: "."
+  exec_path: "example/fiber/test.go"
+  language: go
+  show_output: true
+  extensions_to_watch: 
+    - go
+    - yaml
+    - mod
