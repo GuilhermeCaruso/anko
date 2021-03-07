@@ -20,11 +20,16 @@ type ConfigurationFile struct {
 }
 
 type Application struct {
-	RootPath          string   `yaml:"root_path"`
-	ExecPath          string   `yaml:"exec_path"`
-	Language          string   `yaml:"language"`
-	ShowOutput        bool     `yaml:"show_output"`
-	ExtensionsToWatch []string `yaml:"extensions_to_watch"`
+	RootPath   string `yaml:"root_path"`
+	ExecPath   string `yaml:"exec_path"`
+	Language   string `yaml:"language"`
+	ShowOutput bool   `yaml:"show_output"`
+	Watch      Watch  `yaml:"watch"`
+}
+
+type Watch struct {
+	Extensions []string `yaml:"extensions"`
+	Files      []string `yaml:"files"`
 }
 
 var globalConfiguration *ConfigurationFile

@@ -4,7 +4,10 @@ application:
   exec_path: "example/fiber/test.go"
   language: go
   show_output: true
-  extensions_to_watch: 
-    - go
-    - yaml
-    - mod
+  watch:
+    extensions: 
+      - go
+      - yaml
+      - mod
+    files:
+      - teste.txt
