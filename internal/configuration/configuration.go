@@ -15,7 +15,6 @@ const (
 )
 
 type ConfigurationFile struct {
-	Version     string      `yaml:"version"`
 	Application Application `yaml:"application"`
 }
 
@@ -23,7 +22,7 @@ type Application struct {
 	RootPath   string `yaml:"root_path"`
 	ExecPath   string `yaml:"exec_path"`
 	Language   string `yaml:"language"`
-	ShowOutput bool   `yaml:"show_output"`
+	ShowBanner bool   `yaml:"show_banner"`
 	Watch      Watch  `yaml:"watch"`
 }
 

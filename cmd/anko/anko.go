@@ -22,7 +22,8 @@ func main() {
 	config := configuration.Init()
 
 	w := watcher.New(watcher.WatcherConfig{
-		FileExtensions: config.Application.Watch.Extensions,
+		Files:          config.Application.Watch.Files,
+		Extensions:     config.Application.Watch.Extensions,
 		RootPath:       config.Application.RootPath,
 		DispatcherChan: dispatcher,
 		DoneChan:       done,
