@@ -16,10 +16,15 @@ var (
 
 func main() {
 
+	config, err := configuration.Init()
+
+	if err != nil {
+		banner.Error(err.Error())
+		return
+	}
+
 	banner.Intro()
 	banner.SettingUp()
-
-	config := configuration.Init()
 
 	w := watcher.New(watcher.WatcherConfig{
 		Files:          config.Application.Watch.Files,

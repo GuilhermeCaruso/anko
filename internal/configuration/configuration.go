@@ -4,7 +4,6 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
 
 	"gopkg.in/yaml.v2"
@@ -33,11 +32,11 @@ type Watch struct {
 
 var globalConfiguration *ConfigurationFile
 
-func readFile() *ConfigurationFile {
+func readFile() (*ConfigurationFile, error) {
 	fileName, err := getFileNameIfExists()
 
 	if err != nil {
-		log.Fatal(err.Error())
+		return nil, err
 	}
 
 	byteContent, _ := ioutil.ReadFile(fileName)
@@ -47,23 +46,23 @@ func readFile() *ConfigurationFile {
 	err = yaml.Unmarshal(byteContent, &configuration)
 
 	if err != nil {
-		log.Fatal("Fail to read anko configuration file")
+		return nil, errors.New("Fail to read anko configuration file")
 	}
 
 	globalConfiguration = &configuration
 
-	return globalConfiguration
+	return globalConfiguration, nil
 }
 
-func Init() *ConfigurationFile {
+func Init() (*ConfigurationFile, error) {
 	if globalConfiguration == nil {
 		return readFile()
 	}
-	return globalConfiguration
+	return globalConfiguration, nil
 }
 
 func Get() *ConfigurationFile {
-	return Init()
+	return globalConfiguration
 }
 
 func getFileNameIfExists() (string, error) {
@@ -78,5 +77,5 @@ func getFileNameIfExists() (string, error) {
 		return ymlName, nil
 	}
 
-	return "", errors.New("File doesn`t exists")
+	return "", errors.New("Anko file not found")
 }

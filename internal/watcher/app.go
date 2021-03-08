@@ -23,10 +23,13 @@ func (wc *WatcherConfig) InitApp() {
 	cmd.Stderr = cmd.Stdout
 
 	if err != nil {
+		banner.Error(err.Error())
 		wc.DoneChan <- true
 	}
 
 	if err = cmd.Start(); err != nil {
+
+		banner.Error(err.Error())
 		wc.DoneChan <- true
 	}
 
@@ -69,10 +72,14 @@ func (wc *WatcherConfig) resetApp() {
 	if len(match) > 1 {
 		i, err := strconv.Atoi(match[1])
 		if err != nil {
+
+			banner.Error(err.Error())
 			wc.DoneChan <- true
 		}
 		p, err := os.FindProcess(i)
 		if err != nil {
+
+			banner.Error(err.Error())
 			wc.DoneChan <- true
 		}
 		p.Kill()

@@ -18,6 +18,8 @@ func (wc *WatcherConfig) WatchForChange() {
 	defer watcher.Close()
 
 	if err := filepath.Walk(wc.RootPath, fileListener); err != nil {
+
+		banner.Error(err.Error())
 		wc.DoneChan <- true
 	}
 
