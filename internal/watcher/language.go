@@ -3,6 +3,7 @@ package watcher
 import (
 	"errors"
 	"fmt"
+	"log"
 	"os/exec"
 )
 
@@ -18,7 +19,7 @@ var supportedLanguage = map[string]string{
 	SH:   "shellscript",
 }
 
-func GetExecPath(language string) (string, error) {
+func GetExecPath(language string) string {
 	var err error
 	var execPath string
 
@@ -41,7 +42,11 @@ func GetExecPath(language string) (string, error) {
 	default:
 		err = errors.New("Language not implemented")
 	}
-	return execPath, err
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	return execPath
 }
 
 func buildMsgError(name string) string {

@@ -1,24 +1,41 @@
 package main
 
-import "github.com/GuilhermeCaruso/anko/internal/banner"
+import (
+	"runtime"
 
-type Anko struct {
-	ExecPath string
-}
+	"github.com/GuilhermeCaruso/anko/internal/banner"
+	"github.com/GuilhermeCaruso/anko/internal/configuration"
+	"github.com/GuilhermeCaruso/anko/internal/watcher"
+)
+
+var (
+	done       = make(chan bool)
+	dispatcher = make(chan string)
+	isOpen     = true
+)
 
 func main() {
+
 	banner.Intro()
 	banner.SettingUp()
+
+	config := configuration.Init()
+
+	w := watcher.New(watcher.WatcherConfig{
+		FileExtensions: config.Application.Watch.Extensions,
+		RootPath:       config.Application.RootPath,
+		DispatcherChan: dispatcher,
+		DoneChan:       done,
+		IsOpen:         &isOpen,
+		AppPath:        config.Application.ExecPath,
+		Language:       config.Application.Language,
+		SysOS:          runtime.GOOS,
+	})
+
 	banner.Listening()
-	// config := configuration.Init()
 
-	// execPath, err := watcher.GetExecPath(config.Application.Language)
+	go w.WatchForChange()
+	go w.AppController()
 
-	// if err != nil {
-	// log.Fatal(err)
-	// }
-
-	// mainAnko := Anko{
-	// 	ExecPath: execPath,
-	// }
+	<-done
 }
