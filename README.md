@@ -5,7 +5,7 @@
 
 
 <p>
-    <img src=".github/assets/anko_logo.png" width=150>
+  <img src=".github/assets/anko_logo.png" width=150>
 </p>
 
 The Anko project aims to be a command line used to watch files of different extensions, executing actions previously configured, such as, restart, deletion, execution of scripts, among others.
@@ -15,6 +15,17 @@ The project so far has the following functionalities:
 - Definition of execution language. [List of implemented languages](#implemented-languages)
 - Declaration of extensions and files for watching.
 - Independent configuration file
+
+# Summary
+
+- [Install](#install)
+- [Guide](#guide)
+  - [Anko File](#anko-file)
+- [Example](#example)
+- [Implemented Languages](#implemented-languages)
+- [OS compatibility](#os-compatibility)
+- [Author](#author)
+- [License](#license)
 
 
 
