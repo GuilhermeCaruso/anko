@@ -97,22 +97,35 @@ The configuration file name must always be: `anko.yaml`
 |`files`| []string | List of files that must be observed
 
 
+# Example
 
+Below is a simple example of the `anko.yaml` file
 
-# Implemented languages
-
-anko.yaml
+> anko.yaml
 
 ```yaml
 application:
   root_path: "."
-  exec_path: "example/test.go"
+  exec_path: "path/to/main.go"
   language: go
   watch:
     extensions: 
       - go
-      - yaml
-      - mod
+      - env
     files:
-      - README.md
+      - go.mod
+```
+
+Once you have the Anko cli set up, just run the command in the folder containing the `anko.yaml` file.
+
+```sh
+anko
+```
+
+The initial output should be:
+
+```
+> Starting Anko! 
+> Configuring watcher. 
+> Listening for changes... 
 ```
