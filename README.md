@@ -49,6 +49,24 @@ Once with the binary, remember to add it to the system PATH
 
 > If you still don't know how to do it, [read here](https://superuser.com/questions/284342/what-are-path-and-other-environment-variables-and-how-can-i-set-or-use-them)!
 
+
+# Guide
+
+The anko project was initially developed to observe changes in golang projects and reload it on demand. During development, we noticed that the project could be used for the most diverse languages ​​and technologies (With the help of the community), because of that, it was necessary to add a configuration file, the Anko file
+
+## Anko File
+
+- Localization
+
+The Anko file is a `.yaml` file written, preferably, at the root of the project you want to observe, but nothing prevents you from saving it wherever you want.
+
+- Nomenclature
+
+The project was developed to avoid as much as possible that the user has to adapt the project to suit him, however, the file name is the only information that must be kept as a standard.
+
+The configuration file name must always be: `anko.yaml`
+
+
 # Implemented languages
 
 anko.yaml
