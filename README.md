@@ -28,6 +28,26 @@ The project so far has the following functionalities:
 - [License](#license)
 
 
+# Install
+
+
+- To get Anko CLI
+
+```sh
+go get -u github.com/GuilhermeCaruso/anko
+```
+
+- If you prefer to create your own build using the flags you want, just clone this repository and run the golang build command
+
+```sh
+git clone git@github.com:GuilhermeCaruso/anko.git && \
+cd anko && \
+go <your_flags_here> build  
+```
+
+Once with the binary, remember to add it to the system PATH
+
+> If you still don't know how to do it, [read here](https://superuser.com/questions/284342/what-are-path-and-other-environment-variables-and-how-can-i-set-or-use-them)!
 
 # Implemented languages
 
