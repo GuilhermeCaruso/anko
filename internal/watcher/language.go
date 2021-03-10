@@ -3,7 +3,6 @@ package watcher
 import (
 	"errors"
 	"fmt"
-	"log"
 	"os/exec"
 )
 
@@ -11,15 +10,17 @@ const (
 	GO   = "go"
 	MAKE = "make"
 	SH   = "sh"
+	NODE = "node"
 )
 
 var supportedLanguage = map[string]string{
 	GO:   "golang",
 	MAKE: "makefile",
 	SH:   "shellscript",
+	NODE: "node",
 }
 
-func GetExecPath(language string) string {
+func GetExecPath(language string) (string, error) {
 	var err error
 	var execPath string
 
@@ -39,14 +40,16 @@ func GetExecPath(language string) string {
 		if err != nil {
 			err = errors.New(buildMsgError(supportedLanguage[SH]))
 		}
+	case NODE:
+		execPath, err = exec.LookPath(NODE)
+		if err != nil {
+			err = errors.New(buildMsgError(supportedLanguage[NODE]))
+		}
 	default:
 		err = errors.New("Language not implemented")
 	}
 
-	if err != nil {
-		log.Fatal(err)
-	}
-	return execPath
+	return execPath, err
 }
 
 func buildMsgError(name string) string {

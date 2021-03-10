@@ -22,7 +22,7 @@ The project so far has the following functionalities:
 - [Guide](#guide)
   - [Anko File](#anko-file)
 - [Example](#example)
-- [Implemented Languages](#implemented-languages)
+- [Implemented Languages and Commands](#implemented-languages-and-commands)
 - [OS compatibility](#os-compatibility)
 - [Author](#author)
 - [License](#license)
@@ -129,3 +129,41 @@ The initial output should be:
 > Configuring watcher. 
 > Listening for changes... 
 ```
+
+# Implemented languages and Commands
+
+The implemented languages and commands ​​allow the angel project to be able to execute the most diverse projects independently and performatively.
+
+Throughout the development and with the help of the community, several languages ​​will be implemented and listed below.
+
+
+| Command or languages | Anko name | Status |
+| - | - | - |
+| GO | go | [example]()
+| NodeJs | node |[example]()
+
+# OS compatibility
+
+Throughout the development of the project, with its respective versions and builds, compatibility with the most diverse operating systems is validated to ensure that everything is ok.
+
+As it is a project in its initial phase, not all operating systems are being compatible with it, however, with the help of the community and the commitment of the team involved, we hope to mitigate this problem in an agile manner.
+
+Below are listed in a macro manner the tested operating systems and their respective status
+
+| OS | Status |
+| - | - |
+| Ubuntu 20.0.4 LTS | `compatible`
+| macOS Big Sur | `compatible`
+| Windows 10 | `incompatible`
+
+
+# Author
+
+Guilherme Caruso 
+- [@GuilhermeCaruso](https://github.com/GuilhermeCaruso) on Github
+- [@guicaruso_](https://twitter.com/guicaruso_) on Twitter
+- [@guicaruso_](https://instagram.com/guicaruso_) on Instagram
+
+# License
+
+Apache 2.0 licensed. See the LICENSE file for details.

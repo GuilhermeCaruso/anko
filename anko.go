@@ -41,6 +41,7 @@ func main() {
 	banner.Listening()
 
 	go w.WatchForChange()
+	// time.Sleep(time.Second * 3)
 	go w.AppController()
 
 	<-done

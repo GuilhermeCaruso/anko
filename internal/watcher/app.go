@@ -15,7 +15,21 @@ func (wc *WatcherConfig) InitApp() {
 	var cmd *exec.Cmd
 
 	if wc.Language == GO {
-		cmd = exec.Command(GetExecPath(wc.Language), "run", wc.AppPath)
+		execPath, err := GetExecPath(wc.Language)
+
+		if err != nil {
+			banner.Error(err.Error())
+		}
+
+		cmd = exec.Command(execPath, "run", wc.AppPath)
+	} else if wc.Language == NODE {
+		execPath, err := GetExecPath(wc.Language)
+
+		if err != nil {
+			banner.Error(err.Error())
+		}
+
+		cmd = exec.Command(execPath, wc.AppPath)
 	}
 
 	stdout, err := cmd.StdoutPipe()
