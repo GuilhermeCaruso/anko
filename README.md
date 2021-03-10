@@ -139,8 +139,8 @@ Throughout the development and with the help of the community, several languages
 
 | Command or languages | Anko name | Status |
 | - | - | - |
-| GO | go | [example](example/golang/)
-| NodeJs | node |[example](example/nodejs/)
+| GO | go | [example](https://github.com/GuilhermeCaruso/anko/tree/main/example/golang)
+| NodeJs | node |[example](https://github.com/GuilhermeCaruso/anko/tree/main/example/nodejs)
 
 # OS compatibility
 
