@@ -81,7 +81,15 @@ func (wc *WatcherConfig) resetApp() {
 		command = "ps -A"
 	}
 	b, _ := exec.Command("/bin/sh", "-c", command).Output()
-	r := regexp.MustCompile(fmt.Sprintf(`(\d+).*go-build.*/%s`, appName))
+	var r *regexp.Regexp
+
+	if wc.Language == GO {
+		r = regexp.MustCompile(fmt.Sprintf(`(\d+).*go-build.*/%s`, appName))
+	} else if wc.Language == NODE {
+		r = regexp.MustCompile(fmt.Sprintf(`(\d+).* %s`, wc.AppPath))
+
+	}
+
 	match = r.FindStringSubmatch(string(b))
 	if len(match) > 1 {
 		i, err := strconv.Atoi(match[1])
