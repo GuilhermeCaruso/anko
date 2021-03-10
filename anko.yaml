@@ -1,7 +1,0 @@
-application:
-  root_path: "example/nodejs"
-  exec_path: "example/nodejs/index.js"
-  language: node
-  watch:
-    extensions: 
-      - go
