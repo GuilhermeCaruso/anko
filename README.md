@@ -12,7 +12,7 @@ The Anko project aims to be a command line used to watch files of different exte
 
 The project so far has the following functionalities:
 
-- Definition of execution language. [List of implemented languages](#implemented-languages)
+- Definition of execution language. [List of implemented languages](#implemented-languages-and-commands)
 - Declaration of extensions and files for watching.
 - Independent configuration file
 
@@ -86,7 +86,7 @@ The configuration file name must always be: `anko.yaml`
 |-|-|-|
 |`root_path`| string | Path to the directory to be observed
 |`exec_ath`| string | Path to application entry point
-|`language`| string | Execution language. Check [here](#implemented-languages) if your favorite language has already been implemented
+|`language`| string | Execution language. Check [here](#implemented-languages-and-commands) if your favorite language has already been implemented
 |`watch`| Watch | List of files and extensions to be observed. Initially only update events
 
 > Watch
