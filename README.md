@@ -1,7 +1,7 @@
 # Anko
 > Simple Application watcher
 
-![GitHub](https://img.shields.io/badge/golang%20->=1.15.x-blue.svg) [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-yellow)](https://img.shields.io/badge/License-Apache%202.0-yellow)
+![GitHub](https://img.shields.io/badge/golang%20->=1.15.x-blue.svg) [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-yellow)](https://img.shields.io/badge/License-Apache%202.0-yellow) [![Go Report Card](https://goreportcard.com/badge/github.com/GuilhermeCaruso/anko)](https://goreportcard.com/report/github.com/GuilhermeCaruso/anko) [![Build Status](https://travis-ci.com/GuilhermeCaruso/anko.svg?branch=main)](https://travis-ci.com/GuilhermeCaruso/anko)
 
 
 <p>
