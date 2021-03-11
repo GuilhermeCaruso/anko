@@ -24,6 +24,7 @@ The project so far has the following functionalities:
 - [Example](#example)
 - [Implemented Languages and Commands](#implemented-languages-and-commands)
 - [OS compatibility](#os-compatibility)
+- [To do](#to-do)
 - [Author](#author)
 - [License](#license)
 
@@ -152,9 +153,31 @@ Below are listed in a macro manner the tested operating systems and their respec
 
 | OS | Status |
 | - | - |
-| Ubuntu 20.0.4 LTS | `compatible`
+| Debian | `compatible`
 | macOS Big Sur | `compatible`
 | Windows 10 | `incompatible`
+
+
+# To do
+- [ ] Add tests
+- [ ] Add more elaborate commands to the command line
+  - [ ] Init
+  - [ ] Test
+  - [ ] Update
+  - [ ] Run
+- [ ] Create website for project documentation and news
+- [ ] Add OS compatibility
+  - [ ] Windows 10
+  - [ ] Arch
+  - [ ] Fedora
+- [ ] Improve the implementation of new languages
+- [ ] Add languages or commands compatibility
+  - [ ] Makefile
+  - [ ] Shellscript
+  - [ ] Rust
+  - [ ] Lua
+  - [ ] Yarn
+  - [ ] Npm
 
 
 # Author
