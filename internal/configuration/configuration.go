@@ -13,10 +13,15 @@ const (
 	FILE_NAME = "anko"
 )
 
+// ConfigurationFile is the main structure of the anko project.
+// All the information contained in anko.yaml is converted using
+// the ConfigurationFile structure.
 type ConfigurationFile struct {
 	Application Application `yaml:"application"`
 }
 
+// Application is responsible to mapping the datails of the
+// root application.
 type Application struct {
 	RootPath   string `yaml:"root_path"`
 	ExecPath   string `yaml:"exec_path"`
@@ -25,6 +30,8 @@ type Application struct {
 	Watch      Watch  `yaml:"watch"`
 }
 
+// Watch contains all files and extensions to be observed
+// during the application cycle.
 type Watch struct {
 	Extensions []string `yaml:"extensions"`
 	Files      []string `yaml:"files"`
@@ -54,6 +61,8 @@ func readFile() (*ConfigurationFile, error) {
 	return globalConfiguration, nil
 }
 
+// Init is the basic configuration function, responsible to
+// read and defining the configuration
 func Init() (*ConfigurationFile, error) {
 	if globalConfiguration == nil {
 		return readFile()
@@ -61,6 +70,7 @@ func Init() (*ConfigurationFile, error) {
 	return globalConfiguration, nil
 }
 
+// Get is the getter of the configurationFile
 func Get() *ConfigurationFile {
 	return globalConfiguration
 }
