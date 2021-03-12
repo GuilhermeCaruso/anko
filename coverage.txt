@@ -1,0 +1,15 @@
+mode: atomic
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:42.45,45.16 2 4
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:49.2,55.16 4 3
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:59.2,61.33 2 2
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:45.16,47.3 1 1
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:55.16,57.3 1 1
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:66.41,67.32 1 6
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:70.2,70.33 1 2
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:67.32,69.3 1 4
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:74.31,76.2 1 2
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:78.44,82.54 3 4
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:86.2,86.53 1 2
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:90.2,90.46 1 1
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:82.54,84.3 1 2
+github.com/GuilhermeCaruso/anko/internal/configuration/configuration.go:86.53,88.3 1 1
