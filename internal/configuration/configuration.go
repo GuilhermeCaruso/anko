@@ -10,13 +10,14 @@ import (
 )
 
 const (
+	// FILE_NAME is the name of the main project file
 	FILE_NAME = "anko"
 )
 
-// ConfigurationFile is the main structure of the anko project.
+// Configuration is the main structure of the anko project.
 // All the information contained in anko.yaml is converted using
-// the ConfigurationFile structure.
-type ConfigurationFile struct {
+// the Configuration structure.
+type Configuration struct {
 	Application Application `yaml:"application"`
 }
 
@@ -37,9 +38,9 @@ type Watch struct {
 	Files      []string `yaml:"files"`
 }
 
-var globalConfiguration *ConfigurationFile
+var globalConfiguration *Configuration
 
-func readFile() (*ConfigurationFile, error) {
+func readFile() (*Configuration, error) {
 	fileName, err := getFileNameIfExists()
 
 	if err != nil {
@@ -48,7 +49,7 @@ func readFile() (*ConfigurationFile, error) {
 
 	byteContent, _ := ioutil.ReadFile(fileName)
 
-	var configuration ConfigurationFile
+	var configuration Configuration
 
 	err = yaml.Unmarshal(byteContent, &configuration)
 
@@ -63,7 +64,7 @@ func readFile() (*ConfigurationFile, error) {
 
 // Init is the basic configuration function, responsible to
 // read and defining the configuration
-func Init() (*ConfigurationFile, error) {
+func Init() (*Configuration, error) {
 	if globalConfiguration == nil {
 		return readFile()
 	}
@@ -71,7 +72,7 @@ func Init() (*ConfigurationFile, error) {
 }
 
 // Get is the getter of the configurationFile
-func Get() *ConfigurationFile {
+func Get() *Configuration {
 	return globalConfiguration
 }
 
