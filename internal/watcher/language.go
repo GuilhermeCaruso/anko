@@ -6,50 +6,43 @@ import (
 	"os/exec"
 )
 
-const (
-	GO   = "go"
-	MAKE = "make"
-	SH   = "sh"
-	NODE = "node"
-)
-
-var supportedLanguage = map[string]string{
-	GO:   "golang",
-	MAKE: "makefile",
-	SH:   "shellscript",
-	NODE: "node",
+type Language struct {
+	ExecName      string
+	ExecCmd       string
+	ProcessRegexp string
+	ExecPath      string
 }
 
-func GetExecPath(language string) (string, error) {
+var support = map[string]*Language{
+	"go": {
+		ExecName:      "golang",
+		ExecCmd:       "run",
+		ProcessRegexp: `(\d+).*go-build.*/%s`,
+	},
+	"node": {
+		ExecName:      "node",
+		ProcessRegexp: `(\d+).* %s`,
+	},
+}
+
+func GetLanguage(language string) (*Language, error) {
 	var err error
 	var execPath string
 
-	switch language {
-	case GO:
-		execPath, err = exec.LookPath(GO)
-		if err != nil {
-			err = errors.New(buildMsgError(supportedLanguage[GO]))
-		}
-	case MAKE:
-		execPath, err = exec.LookPath(MAKE)
-		if err != nil {
-			err = errors.New(buildMsgError(supportedLanguage[MAKE]))
-		}
-	case SH:
-		execPath, err = exec.LookPath(SH)
-		if err != nil {
-			err = errors.New(buildMsgError(supportedLanguage[SH]))
-		}
-	case NODE:
-		execPath, err = exec.LookPath(NODE)
-		if err != nil {
-			err = errors.New(buildMsgError(supportedLanguage[NODE]))
-		}
-	default:
-		err = errors.New("Language not implemented")
+	selectedLanguage := support[language]
+
+	if selectedLanguage == nil {
+		return nil, errors.New("Language not implemented")
 	}
 
-	return execPath, err
+	execPath, err = exec.LookPath(language)
+	if err != nil {
+		err = errors.New(buildMsgError(selectedLanguage.ExecName))
+	}
+
+	selectedLanguage.ExecPath = execPath
+
+	return selectedLanguage, err
 }
 
 func buildMsgError(name string) string {

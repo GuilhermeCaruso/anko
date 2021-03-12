@@ -14,24 +14,20 @@ import (
 func (wc *WatcherConfig) InitApp() {
 	var cmd *exec.Cmd
 
-	if wc.Language == GO {
-		execPath, err := GetExecPath(wc.Language)
+	lang, err := GetLanguage(wc.Language)
 
-		if err != nil {
-			banner.Error(err.Error())
-		}
+	wc.selectedLanguage = lang
 
-		cmd = exec.Command(execPath, "run", wc.AppPath)
-	} else if wc.Language == NODE {
-		execPath, err := GetExecPath(wc.Language)
-
-		if err != nil {
-			banner.Error(err.Error())
-		}
-
-		cmd = exec.Command(execPath, wc.AppPath)
+	if err != nil {
+		banner.Error(err.Error())
 	}
 
+	if wc.selectedLanguage.ExecCmd == "" {
+		cmd = exec.Command(wc.selectedLanguage.ExecPath, wc.AppPath)
+	} else {
+		cmd = exec.Command(wc.selectedLanguage.ExecPath, wc.selectedLanguage.ExecCmd, wc.AppPath)
+
+	}
 	stdout, err := cmd.StdoutPipe()
 
 	cmd.Stderr = cmd.Stdout
@@ -65,7 +61,7 @@ func (wc *WatcherConfig) InitApp() {
 }
 
 func (wc *WatcherConfig) resetApp() {
-	re := regexp.MustCompile(`(?m)\/([\w_]*).go`)
+	re := regexp.MustCompile(`(?m)\/([\w_]*).go$`)
 
 	match := re.FindStringSubmatch(wc.AppPath)
 
@@ -83,12 +79,8 @@ func (wc *WatcherConfig) resetApp() {
 	b, _ := exec.Command("/bin/sh", "-c", command).Output()
 	var r *regexp.Regexp
 
-	if wc.Language == GO {
-		r = regexp.MustCompile(fmt.Sprintf(`(\d+).*go-build.*/%s`, appName))
-	} else if wc.Language == NODE {
-		r = regexp.MustCompile(fmt.Sprintf(`(\d+).* %s`, wc.AppPath))
-
-	}
+	r = regexp.MustCompile(fmt.Sprintf(wc.selectedLanguage.ProcessRegexp, appName))
+	fmt.Println(wc.AppPath)
 
 	match = r.FindStringSubmatch(string(b))
 	if len(match) > 1 {
