@@ -11,7 +11,9 @@ import (
 	"github.com/GuilhermeCaruso/anko/internal/banner"
 )
 
-func (wc *WatcherConfig) InitApp() {
+// InitApp is responsible for initializing the configured application using anko.yaml
+// to configure the primary language and processes.
+func (wc *Watcher) InitApp() {
 	var cmd *exec.Cmd
 
 	lang, err := GetLanguage(wc.Language)
@@ -60,7 +62,7 @@ func (wc *WatcherConfig) InitApp() {
 	}
 }
 
-func (wc *WatcherConfig) resetApp() {
+func (wc *Watcher) resetApp() {
 	re := regexp.MustCompile(`(?m)\/([\w_]*).go$`)
 
 	match := re.FindStringSubmatch(wc.AppPath)
@@ -80,7 +82,6 @@ func (wc *WatcherConfig) resetApp() {
 	var r *regexp.Regexp
 
 	r = regexp.MustCompile(fmt.Sprintf(wc.selectedLanguage.ProcessRegexp, appName))
-	fmt.Println(wc.AppPath)
 
 	match = r.FindStringSubmatch(string(b))
 	if len(match) > 1 {
@@ -101,7 +102,9 @@ func (wc *WatcherConfig) resetApp() {
 	}
 }
 
-func (wc *WatcherConfig) AppController() {
+// AppController is the main channel used for control anko actions
+// like reset, start and other future options
+func (wc *Watcher) AppController() {
 	openDispacher := true
 	go wc.InitApp()
 	for {

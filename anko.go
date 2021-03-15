@@ -26,7 +26,7 @@ func main() {
 	banner.Intro()
 	banner.SettingUp()
 
-	w := watcher.New(watcher.WatcherConfig{
+	w := watcher.New(watcher.Watcher{
 		Files:          config.Application.Watch.Files,
 		Extensions:     config.Application.Watch.Extensions,
 		RootPath:       config.Application.RootPath,

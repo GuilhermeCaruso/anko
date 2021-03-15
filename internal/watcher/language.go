@@ -6,6 +6,8 @@ import (
 	"os/exec"
 )
 
+// Language is a structure responsible for the control language information such as Name,
+// CommandPath, process expression and other details used for the control processes.
 type Language struct {
 	ExecName      string
 	ExecCmd       string
@@ -13,7 +15,7 @@ type Language struct {
 	ExecPath      string
 }
 
-var support = map[string]*Language{
+var supportedLanguages = map[string]*Language{
 	"go": {
 		ExecName:      "golang",
 		ExecCmd:       "run",
@@ -25,11 +27,12 @@ var support = map[string]*Language{
 	},
 }
 
+// GetLanguage is a simple selector using supportedLanguages
 func GetLanguage(language string) (*Language, error) {
 	var err error
 	var execPath string
 
-	selectedLanguage := support[language]
+	selectedLanguage := supportedLanguages[language]
 
 	if selectedLanguage == nil {
 		return nil, errors.New("Language not implemented")
