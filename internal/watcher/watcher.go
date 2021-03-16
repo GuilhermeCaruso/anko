@@ -12,7 +12,8 @@ import (
 
 var watcher *fsnotify.Watcher
 
-func (wc *WatcherConfig) WatchForChange() {
+// WatchForChange is a simple fsnotify wrapper used to watch all root patch events.
+func (wc *Watcher) WatchForChange() {
 	closeDispatcher := false
 	watcher, _ = fsnotify.NewWatcher()
 	defer watcher.Close()
