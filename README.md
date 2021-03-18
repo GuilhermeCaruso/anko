@@ -3,9 +3,8 @@
 
 ![GitHub](https://img.shields.io/badge/golang%20->=1.15.x-blue.svg) [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-yellow)](https://img.shields.io/badge/License-Apache%202.0-yellow) [![Go Report Card](https://goreportcard.com/badge/github.com/GuilhermeCaruso/anko)](https://goreportcard.com/report/github.com/GuilhermeCaruso/anko) [![Build Status](https://travis-ci.com/GuilhermeCaruso/anko.svg?branch=main)](https://travis-ci.com/GuilhermeCaruso/anko) [![codecov](https://codecov.io/gh/GuilhermeCaruso/anko/branch/main/graph/badge.svg?token=FROE5RSLOY)](https://codecov.io/gh/GuilhermeCaruso/anko)
 
-
-<p>
-  <img src=".github/assets/anko_logo.png" width=150>
+<p >
+  <img src=".github/assets/anko_logo.png" width=200>
 </p>
 
 The Anko project aims to be a command line used to watch files of different extensions, executing actions previously configured, such as, restart, deletion, execution of scripts, among others.
@@ -159,7 +158,6 @@ Below are listed in a macro manner the tested operating systems and their respec
 
 
 # To do
-- [ ] Add tests
 - [ ] Add more elaborate commands to the command line
   - [ ] Init
   - [ ] Test
